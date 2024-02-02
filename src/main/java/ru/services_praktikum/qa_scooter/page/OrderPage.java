@@ -42,8 +42,13 @@ public class OrderPage extends BasePage {
     private final By orderInOrder = By.xpath("(.//button[contains(text(),'Заказать')])[2]");
 
     //Уведомление "Хотите оформить заказ?"
-    private final By orderModal = By.className("Order_Modal__YZ-d3");
+    private final By modalDoYouWantToPlaceOrder = By.xpath(".//div[@class='Order_Modal__YZ-d3']//div[contains(text(),'Хотите оформить заказ?')]//..");
 
+    //Кнопка "Да"
+    private final By yesButton = By.xpath(".//button[contains(text(),'Да')]");
+
+    //Уведомление окно "Заказ оформлен"
+    private final By modalOrderHasBeenPlaced = By.xpath(".//div[@class='Order_Modal__YZ-d3']//div[contains(text(),'Заказ оформлен')]//..");
 
     public OrderPage(WebDriver driver) {
         super(driver);
@@ -104,8 +109,15 @@ public class OrderPage extends BasePage {
         return this;
     }
 
-    //Проверить,Что появилась модальное окно
-    public boolean checkingOrderModal() {
-        return driver.findElement(orderModal).isDisplayed();
+    //Проверить,Что появилась модальное окно и нажать кнопку Да
+    public OrderPage checkingOrderModalAndClickYes() {
+        driver.findElement(modalDoYouWantToPlaceOrder).isDisplayed();
+        driver.findElement(yesButton).click();
+        return this;
+    }
+
+    //Проверить,Что появилась модальное окно "Заказ оформлен"
+    public boolean checkingModalOrderHasBeenPlaced() {
+        return driver.findElement(modalOrderHasBeenPlaced).isDisplayed();
     }
 }

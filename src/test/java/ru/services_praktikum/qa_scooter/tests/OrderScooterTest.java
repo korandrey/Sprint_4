@@ -25,7 +25,8 @@ public class OrderScooterTest extends BaseTest {
                 .chooseDayRentalPeriod()
                 .chooseBlackScooter()
                 .clickOnButtonOrder()
-                .checkingOrderModal();
+                .checkingOrderModalAndClickYes()
+                .checkingModalOrderHasBeenPlaced();
 
         assertTrue(isModalDisplayed);
     }
@@ -42,7 +43,8 @@ public class OrderScooterTest extends BaseTest {
                 .chooseDayRentalPeriod()
                 .chooseBlackScooter()
                 .clickOnButtonOrder()
-                .checkingOrderModal();
+                .checkingOrderModalAndClickYes()
+                .checkingModalOrderHasBeenPlaced();
 
         assertTrue(isModalDisplayed);
     }
